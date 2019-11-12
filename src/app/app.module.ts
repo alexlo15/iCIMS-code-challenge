@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatExpansionModule, MatGridListModule } from "@angular/material"
+import { MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,11 @@ import { MatCardModule, MatExpansionModule, MatGridListModule } from "@angular/m
     MatCardModule,
     MatExpansionModule,
     MatGridListModule,
+    MatToolbarModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    FormsModule,
 
   ],
   providers: [],

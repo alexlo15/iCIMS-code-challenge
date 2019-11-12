@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { FormControl } from "@angular/forms";
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-jobs',
@@ -7,22 +10,45 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  jobs;
-  constructor(private http: HttpClient) { }
 
+  jobs;
+  options: string[] = [];
+  myControl = new FormControl();
+  filterOptions: Observable<string[]>;
+
+  constructor(private http: HttpClient) { }
   ngOnInit() {
     let res = this.http.get("https://testapi.io/api/crimsonsunset/code-challenge-jobs");
     res.subscribe(data => {
       this.saveData(data);
     });
-  }
+    this.filterOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    )
+  };
+
+  private _filter(value: string): string[] {
+    const filterVal = value.toLowerCase();
+    return this.options.filter(option =>
+      option.toLowerCase().includes(filterVal)
+    );
+  };
 
   saveData(resp) {
     this.jobs = resp.jobs
     console.log(this.jobs)
+    this.saveJobTitles(this.jobs)
+  };
+
+  saveJobTitles(x) {
+    x.map(name => this.options.push(name.data.title))
+    console.log(this.options)
   }
 
-  //  doThis = () => {
-  //   console.log(this.jobData);
-  // }
+  // Fills form out with a string instead of object
+  displayFunc(subj) {
+    return subj ? subj.data.title : undefined;
+  }
+
 };

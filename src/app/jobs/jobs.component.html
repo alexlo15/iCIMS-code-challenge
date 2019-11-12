@@ -1,6 +1,16 @@
 <h2>Jobs:</h2>
 
-<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-form-field>
+        <input type="text" [matAutocomplete]="auto" [formControl]="myControl" matInput />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc">
+            <mat-option *ngFor="let option of filterOptions | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+
+<mat-grid-list cols="2" rowHeight="5:2">
     <div *ngFor="let job of jobs">
         <mat-grid-tile>
             <mat-expansion-panel>
@@ -8,14 +18,16 @@
                     <mat-panel-title>
                         <mat-card>
                             <mat-card-title id="eachjobheader">{{job.data.title}}</mat-card-title>
-                            <mat-card-subtitle id="eachjobsalary">${{job.data.salary_value}}/{{job.data.salary_frequency}}
+                            <mat-card-subtitle id="eachjobsalary">
+                                ${{job.data.salary_value}}/{{job.data.salary_frequency}}
                             </mat-card-subtitle>
                         </mat-card>
                     </mat-panel-title>
                     <mat-panel-description>
                         <mat-card>
 
-                            <mat-card-subtitle id="eachjoblocation">{{job.data.city}},{{job.data.state}}</mat-card-subtitle>
+                            <mat-card-subtitle id="eachjoblocation">{{job.data.city}},{{job.data.state}}
+                            </mat-card-subtitle>
 
                         </mat-card>
 
