@@ -48,7 +48,12 @@ export class JobsComponent implements OnInit {
 
   // Fills form out with a string instead of object
   displayFunc(subj) {
-    return subj ? subj.data.title : undefined;
+    return subj ? subj.title : undefined;
+  }
+
+
+  onFormSubmit(){
+    console.log(this.options)
   }
 
 };

@@ -1,7 +1,8 @@
-<h2>Jobs:</h2>
+
+    <h2>Jobs:</h2>
 
     <mat-form-field>
-        <input type="text" [matAutocomplete]="auto" [formControl]="myControl" matInput />
+        <input type="text" [matAutocomplete]="auto" [formControl]="myControl" (click)="onFormSubmit()" matInput />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc">
             <mat-option *ngFor="let option of filterOptions | async" [value]="option">
                 {{option}}
@@ -10,43 +11,63 @@
     </mat-form-field>
 
 
-<mat-grid-list cols="2" rowHeight="5:2">
-    <div *ngFor="let job of jobs">
+<mat-grid-list cols="1" rowHeight="10:2">
+    <div id="jobCards" *ngFor="let job of jobs">
         <mat-grid-tile>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-card>
-                            <mat-card-title id="eachjobheader">{{job.data.title}}</mat-card-title>
-                            <mat-card-subtitle id="eachjobsalary">
-                                ${{job.data.salary_value}}/{{job.data.salary_frequency}}
-                            </mat-card-subtitle>
-                        </mat-card>
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        <mat-card>
+            <mat-card>
+                <mat-card-title>
+                    <p id="eachjobheader">
+                        <span>{{job.data.title}}</span>
+                        <span id="company"><i class="material-icons">
+                                business_center
+                            </i>{{job.data.hiring_organization}}
+                        </span>
+                    </p>
+                </mat-card-title>
 
-                            <mat-card-subtitle id="eachjoblocation">{{job.data.city}},{{job.data.state}}
-                            </mat-card-subtitle>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <p id="eachjoblocation">
+                                <span>
+                                    <i class="material-icons">location_city</i>
+                                    {{job.data.city}}, {{job.data.state}}
+                                </span>
+                                <span>
+                                    <i class="material-icons">attach_money</i>
+                                    {{job.data.salary_value}}/{{job.data.salary_frequency}}
+                                </span>
+                                <span>
+                                    <i class="material-icons">calendar_today</i>
+                                    {{job.data.employment_type}}
+                                </span>
+                                <span>
+                                    <i class="material-icons"> av_timer</i>
+                                    {{job.data.work_hours}}
+                                </span>
+                                <span>
+                                    <i class="material-icons">emoji_objects</i>
+                                    {{job.data.experience_levels}}
+                                </span>
+                            </p>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
 
-                        </mat-card>
+                    <ul id="eachjobbody">
+                        <li><strong>Address: </strong>{{job.data.street_address}}, {{job.data.city}}, {{job.data.state}}, {{job.data.postal_code}}</li>
+                        <li><strong>Qualifications: </strong>{{job.data.qualifications}}</li>
+                        <li><strong>Education: </strong>{{job.data.education_level}}</li>
+                        <li><strong>Contact: </strong>{{job.data.source}}</li>
+                        <li><strong>Posted date: </strong>{{job.data.create_date}}</li>
+                        <li><strong>Travel Required: </strong>{{job.data.multipleLocations}}</li>
 
-                    </mat-panel-description>
-
-                </mat-expansion-panel-header>
-
-
-                <ul id="eachjobbody">
-                    <li>{{job.data.street_address}}, {{job.data.city}}, {{job.data.state}}, {{job.data.postal_code}}
-                    </li>
-                    <li>{{job.data.description}}</li>
-
-                </ul>
+                    </ul>
 
 
 
 
-            </mat-expansion-panel>
+                </mat-expansion-panel>
+            </mat-card>
         </mat-grid-tile>
     </div>
 </mat-grid-list>
