@@ -1,0 +1,40 @@
+<h2>Jobs:</h2>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <div *ngFor="let job of jobs">
+        <mat-grid-tile>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-card>
+                            <mat-card-title id="eachjobheader">{{job.data.title}}</mat-card-title>
+                            <mat-card-subtitle id="eachjobsalary">${{job.data.salary_value}}/{{job.data.salary_frequency}}
+                            </mat-card-subtitle>
+                        </mat-card>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-card>
+
+                            <mat-card-subtitle id="eachjoblocation">{{job.data.city}},{{job.data.state}}</mat-card-subtitle>
+
+                        </mat-card>
+
+                    </mat-panel-description>
+
+                </mat-expansion-panel-header>
+
+
+                <ul id="eachjobbody">
+                    <li>{{job.data.street_address}}, {{job.data.city}}, {{job.data.state}}, {{job.data.postal_code}}
+                    </li>
+                    <li>{{job.data.description}}</li>
+
+                </ul>
+
+
+
+
+            </mat-expansion-panel>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>
