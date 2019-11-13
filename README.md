@@ -4,6 +4,7 @@ ___
 
 ## Purpose
 Retrieve job data from provided API and display to user in a well rounded UI.
+It is also my first time using TypeScript and Angular! Exciting!
 
 ## Technologies used and why
 
