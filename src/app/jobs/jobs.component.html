@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <mat-grid-list cols="1" rowHeight="50px">
     <mat-grid-tile>
-        <h2>Search job postings:</h2>
+        <h2>Search job jyhgjhgjhg postings:</h2>
         <form>
 
             <mat-form-field>
                 <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl" />
             </mat-form-field>
-            <button (click)="onclick(option)" mat-raised-button color="primary">Search</button>
+            <button (click)="onclick(this.myControl.value)" mat-raised-button color="primary">Search</button>
 
             <mat-autocomplete role="input" #auto="matAutocomplete"
                 [displayWith]="displayFunc">

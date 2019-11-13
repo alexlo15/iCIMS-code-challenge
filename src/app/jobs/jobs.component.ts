@@ -55,6 +55,7 @@ export class JobsComponent implements OnInit {
 
   onclick(value) {
     this.chosenJob = value
+    console.log(this.myControl.value)
     console.log(this.chosenJob);
     console.log(value)
   };
