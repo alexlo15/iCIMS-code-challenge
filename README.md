@@ -1,27 +1,42 @@
-# CodeChallengeApp
+# [iCIMS Job Board Challenge](https://icims-job-challenge.herokuapp.com/) //deployed link
+By Alex Lo
+___
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
+## Purpose
+Retrieve job data from provided API and display to user in a well rounded UI.
 
-## Development server
+## Technologies used and why
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Built with:**
+* [Angular](https://angular.io/)
+* [Angular Material](https://material.angular.io/)
+* [Node](https://nodejs.org/en/)
+* [express](https://expressjs.com/)
+* [Heroku](https://www.mongodb.com/)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to run
+Our website features: 
 
-## Build
+1. GIt clone this repo to your machine
+2. 'cd' to root folder
+3. Run command "npm install"
+4. Run command "npm start"
+5. Open localhost:8008 in your browser.
+6. Apply for jobs!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Screenshots
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* ![Logo](src/images/sshot.jpg)
 
-## Running end-to-end tests
+## License
+A short snippet describing the license (MIT, Apache etc)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+MIT © 
+[Alex Lo](https://github.com/alexlo15)
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
