@@ -1,23 +1,18 @@
-#eachjobheader{
-    font-size: 25px;
-}
-#eachjobsalary, #eachjoblocation, #eachjobdescription{
-    font-size: 15px;
-}
-
-// #descArea{
-//     height: 40px;
-//     overflow: scroll;
-// }
-
-#eachjobbody{
-    overflow: scroll;
+#statbar{
+    margin-right: 15px;
 }
 
 #company{
     float: right;
 }
-
-#jobCards{
-    overflow: scroll;
+#cards{
+    width: 80vw;
+    background-color: rgba(158, 158, 158, 0.315);
+    font-size: 25px;
+}
+mat-expansion-panel:active{
+    background-color: rgb(28, 169, 212);
+}
+input{
+    background-color: rgb(255, 255, 255);
 }

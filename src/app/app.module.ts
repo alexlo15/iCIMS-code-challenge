@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
+import { MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobsComponent,
     SinglejobpageComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component'
     MatAutocompleteModule,
     FormsModule,
     MatIconModule,
+    MatDividerModule
 
   ],
   providers: [],

@@ -52,8 +52,8 @@ export class JobsComponent implements OnInit {
   }
 
 
-  onFormSubmit(){
-    console.log(this.options)
+  onFormSubmit(value){
+    console.log(value)
   }
 
 };

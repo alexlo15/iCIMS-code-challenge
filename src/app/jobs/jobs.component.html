@@ -1,20 +1,25 @@
+<app-navbar></app-navbar>
+<mat-grid-list cols="1" rowHeight="50px">
+    <mat-grid-tile>
+        <h2>Search job postings:</h2>
 
-    <h2>Jobs:</h2>
+        <mat-form-field>
+            <input type="text" [matAutocomplete]="auto" [formControl]="myControl" (click)="onFormSubmit()" matInput />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc">
+                <mat-option *ngFor="let option of filterOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </mat-grid-tile>
+</mat-grid-list>
 
-    <mat-form-field>
-        <input type="text" [matAutocomplete]="auto" [formControl]="myControl" (click)="onFormSubmit()" matInput />
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc">
-            <mat-option *ngFor="let option of filterOptions | async" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
 
 
 <mat-grid-list cols="1" rowHeight="10:2">
-    <div id="jobCards" *ngFor="let job of jobs">
+    <div *ngFor="let job of jobs">
         <mat-grid-tile>
-            <mat-card>
+            <mat-card id="cards">
                 <mat-card-title>
                     <p id="eachjobheader">
                         <span>{{job.data.title}}</span>
@@ -29,39 +34,52 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <p id="eachjoblocation">
-                                <span>
+                                <span id="statbar">
                                     <i class="material-icons">location_city</i>
                                     {{job.data.city}}, {{job.data.state}}
                                 </span>
-                                <span>
+                                <span id="statbar">
                                     <i class="material-icons">attach_money</i>
                                     {{job.data.salary_value}}/{{job.data.salary_frequency}}
                                 </span>
-                                <span>
+                                <span id="statbar">
                                     <i class="material-icons">calendar_today</i>
                                     {{job.data.employment_type}}
                                 </span>
-                                <span>
+                                <span id="statbar">
                                     <i class="material-icons"> av_timer</i>
                                     {{job.data.work_hours}}
                                 </span>
-                                <span>
+                                <span id="statbar">
                                     <i class="material-icons">emoji_objects</i>
-                                    {{job.data.experience_levels}}
+                                    {{job.data.experience_levels}} Level
                                 </span>
                             </p>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <ul id="eachjobbody">
-                        <li><strong>Address: </strong>{{job.data.street_address}}, {{job.data.city}}, {{job.data.state}}, {{job.data.postal_code}}</li>
-                        <li><strong>Qualifications: </strong>{{job.data.qualifications}}</li>
-                        <li><strong>Education: </strong>{{job.data.education_level}}</li>
-                        <li><strong>Contact: </strong>{{job.data.source}}</li>
-                        <li><strong>Posted date: </strong>{{job.data.create_date}}</li>
-                        <li><strong>Travel Required: </strong>{{job.data.multipleLocations}}</li>
+                    <mat-grid-list cols="3" rowHeight="3:1">
+                        <mat-grid-tile>
+                            <p>{{job.data.description.substring(0,300)}}</p>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <ul id="eachjobbody">
+                                <li><strong>Address: </strong>{{job.data.street_address}}, {{job.data.city}},
+                                    {{job.data.state}}, {{job.data.postal_code}}</li>
+                                <li><strong>Qualifications: </strong>{{job.data.qualifications}}</li>
+                                <li><strong>Education: </strong>{{job.data.education_level}}</li>
 
-                    </ul>
+                            </ul>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <ul id="eachjobbody">
+                                <li><strong>Contact: </strong>{{job.data.source}}</li>
+                                <li><strong>Posted date: </strong>{{job.data.create_date}}</li>
+                                <li><strong>Travel Required: </strong>{{job.data.multipleLocations}}</li>
+                            </ul>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
 
 
 
@@ -69,5 +87,6 @@
                 </mat-expansion-panel>
             </mat-card>
         </mat-grid-tile>
+
     </div>
 </mat-grid-list>
