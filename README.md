@@ -18,32 +18,22 @@ Retrieve job data from provided API and display to user in a well rounded UI.
 ## How to run
 Our website features: 
 
-1. SignIn Page
-2. Flashcards
-3. Drag & Drop Quiz
-4. Memory Match
-5. Whiteboard
-6. Leaderboard
+1. GIt clone this repo to your machine
+2. 'cd' to root folder
+3. Run command "npm install"
+4. Run command "npm start"
+5. Open localhost:8008 in your browser.
+6. Apply for jobs!
 
 
 ## Screenshots
 
-* ![Logo](https://github.com/alexlo15/knodeyacode/blob/master/client/src/components/shared/Navigation/logo.png "Logo")
-
-
-
-
-
+* ![Logo](src/images/sshot.jpg)
 
 ## License
 A short snippet describing the license (MIT, Apache etc)
 
 MIT © 
-[Andrew Sirico](https://github.com/siricoa94),
-[Rishi Ajay](https://github.com/rishiajay),
-[Hetal Patel](https://github.com/HET1905),
-[Dealan Diongzon](https://github.com/ddiongzon001), 
-[Darius McPhatter](https://github.com/kwame16),
 [Alex Lo](https://github.com/alexlo15)
 
 
