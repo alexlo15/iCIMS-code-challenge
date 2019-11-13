@@ -28,7 +28,7 @@ Our website features:
 
 ## Screenshots
 
-* ![Logo](src/images/sshot.jpg)
+* ![Logo](src/images/sshot.JPG)
 
 ## License
 A short snippet describing the license (MIT, Apache etc)
