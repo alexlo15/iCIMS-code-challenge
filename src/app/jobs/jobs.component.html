@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <mat-grid-list cols="1" rowHeight="50px">
     <mat-grid-tile>
-        <h2>Search job jyhgjhgjhg postings:</h2>
+        <h2>Search job postings:</h2>
         <form>
 
             <mat-form-field>
@@ -9,8 +9,7 @@
             </mat-form-field>
             <button (click)="onclick(this.myControl.value)" mat-raised-button color="primary">Search</button>
 
-            <mat-autocomplete role="input" #auto="matAutocomplete"
-                [displayWith]="displayFunc">
+            <mat-autocomplete role="input" #auto="matAutocomplete" [displayWith]="displayFunc">
                 <mat-option *ngFor="let option of filterOptions | async" [value]="option">
                     {{option}}
                 </mat-option>
@@ -97,3 +96,7 @@
 
     </div>
 </mat-grid-list>
+
+<li *ngFor="let job of filterArray | myfilter:filterArg">
+    <div>{{job.data.title}} </div>
+</li>

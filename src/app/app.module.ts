@@ -10,6 +10,7 @@ import { MatButtonModule ,MatDividerModule ,MatIconModule ,MatCardModule, MatInp
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MyFilterPipe } from './pipes/jobfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     JobsComponent,
     SinglejobpageComponent,
     NavbarComponent,
+    MyFilterPipe,
   ],
   imports: [
     BrowserModule,

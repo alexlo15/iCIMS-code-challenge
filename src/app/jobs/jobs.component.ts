@@ -12,6 +12,9 @@ import { map, startWith } from 'rxjs/operators';
 export class JobsComponent implements OnInit {
 
   public jobs;
+  public jobsearch;
+  public filterArray
+  public filterArg;
   public options: string[] = [];
   public myControl = new FormControl();
   public filterOptions: Observable<string[]>;
@@ -19,7 +22,7 @@ export class JobsComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   ngOnInit() {
-    let res = this.http.get("https://testapi.io/api/crimsonsunset/code-challenge-jobs");
+    const res = this.http.get("https://testapi.io/api/crimsonsunset/code-challenge-jobs");
     res.subscribe(data => {
       this.saveData(data);
     });
@@ -37,15 +40,28 @@ export class JobsComponent implements OnInit {
   };
 
   saveData(resp) {
-    this.jobs = resp.jobs
-    console.log(this.jobs)
-    this.saveJobTitles(this.jobs)
+    this.jobs = resp.jobs;
+    console.log(this.jobs);
+    this.saveJobTitles(this.jobs);
+    // this.filterArray = resp.jobs;
   };
 
   saveJobTitles(x) {
     x.map(name => this.options.push(name.data.title))
     console.log(this.options)
   };
+
+  // saveSearchData(resp) {
+  //   this.jobsearch = resp.jobs
+  //   console.log(this.jobsearch)
+  //   this.jobsearch.filter(this.searchFilter())
+  // };
+
+  // searchFilter(x, y){
+  //   if (x.data.title = y){
+  //     return x;
+  //   }
+  // }
 
   // Fills form out with a string instead of object
   displayFunc(subj) {
@@ -57,7 +73,17 @@ export class JobsComponent implements OnInit {
     this.chosenJob = value
     console.log(this.myControl.value)
     console.log(this.chosenJob);
-    console.log(value)
-  };
+    let filterArg = {title: this.chosenJob};
+    let filterArray = this.jobs;
 
+    console.log(filterArg)
+    //   let res2 = this.http.get("https://testapi.io/api/crimsonsunset/code-challenge-jobs");
+    //   res2.subscribe(data => {
+    //     this.saveSearchData(data);
+    //   });
+    //   this.filterOptions = this.myControl.valueChanges.pipe(
+    //     startWith(''),
+    //     map(value => (this._filter(value))
+    //     ))
+  }
 };
