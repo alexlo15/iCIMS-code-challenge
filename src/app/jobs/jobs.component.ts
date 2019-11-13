@@ -11,10 +11,11 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class JobsComponent implements OnInit {
 
-  jobs;
-  options: string[] = [];
-  myControl = new FormControl();
-  filterOptions: Observable<string[]>;
+  public jobs;
+  public options: string[] = [];
+  public myControl = new FormControl();
+  public filterOptions: Observable<string[]>;
+  public chosenJob = "";
 
   constructor(private http: HttpClient) { }
   ngOnInit() {
@@ -24,8 +25,8 @@ export class JobsComponent implements OnInit {
     });
     this.filterOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
-    )
+      map(value => (this._filter(value))
+      ))
   };
 
   private _filter(value: string): string[] {
@@ -44,16 +45,18 @@ export class JobsComponent implements OnInit {
   saveJobTitles(x) {
     x.map(name => this.options.push(name.data.title))
     console.log(this.options)
-  }
+  };
 
   // Fills form out with a string instead of object
   displayFunc(subj) {
-    return subj ? subj.title : undefined;
-  }
+    return subj ? subj : undefined;
+  };
 
 
-  onFormSubmit(value){
+  onclick(value) {
+    this.chosenJob = value
+    console.log(this.chosenJob);
     console.log(value)
-  }
+  };
 
 };

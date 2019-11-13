@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
+import { MatButtonModule ,MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -36,7 +36,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatAutocompleteModule,
     FormsModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule,
 
   ],
   providers: [],

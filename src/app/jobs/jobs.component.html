@@ -2,15 +2,22 @@
 <mat-grid-list cols="1" rowHeight="50px">
     <mat-grid-tile>
         <h2>Search job postings:</h2>
+        <form>
 
-        <mat-form-field>
-            <input type="text" [matAutocomplete]="auto" [formControl]="myControl" (click)="onFormSubmit()" matInput />
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc">
+            <mat-form-field>
+                <input type="text" matInput [matAutocomplete]="auto" [formControl]="myControl" />
+            </mat-form-field>
+            <button (click)="onclick(option)" mat-raised-button color="primary">Search</button>
+
+            <mat-autocomplete role="input" #auto="matAutocomplete"
+                [displayWith]="displayFunc">
                 <mat-option *ngFor="let option of filterOptions | async" [value]="option">
                     {{option}}
                 </mat-option>
+
             </mat-autocomplete>
-        </mat-form-field>
+
+        </form>
     </mat-grid-tile>
 </mat-grid-list>
 
