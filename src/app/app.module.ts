@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule ,MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatAutocomplete } from "@angular/material"
+import { MatButtonModule ,MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatBottomSheetModule } from "@angular/material"
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,7 +26,9 @@ import { MyFilterPipe } from './pipes/jobfilter.pipe';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: JobsComponent },
-      { path: 'job/:id', component: SinglejobpageComponent },
+      { path: ':id', component: SinglejobpageComponent },
+      // { path: '**', component: PageNotFoundComponent }
+
     ]),
     BrowserAnimationsModule,
     MatCardModule,
@@ -40,6 +42,7 @@ import { MyFilterPipe } from './pipes/jobfilter.pipe';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
+    MatBottomSheetModule
 
   ],
   providers: [],

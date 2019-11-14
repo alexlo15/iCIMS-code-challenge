@@ -50,7 +50,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar id=\"navbar\">\n        <span>\n            <a id=\"navlink\"routerLink='/' routerLinkActive=\"active\">\n                <i class=\"material-icons\">\n                    account_box\n                </i>\n                4Hire\n            </a>\n        </span>\n        <span class=\"remaining-space\"></span>\n        <span>\n            <!-- Right Side text here -->\n    \n        </span>\n    </mat-toolbar>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar id=\"navbar\">\n        <span>\n            <a id=\"navlink\" routerLink='/' routerLinkActive=\"active\">\n                <i class=\"material-icons\">\n                    account_box\n                </i>\n                4Hire\n            </a>\n        </span>\n        <span class=\"remaining-space\"></span>\n        <span>\n            <!-- Right Side text here -->\n    \n        </span>\n    </mat-toolbar>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/singlejobpage/singlejobpage.component.html": 
@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<p>singlejobpage works!</p>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div>\n    passed in {{data.searchResults}}\n\n\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -470,7 +470,7 @@
                         _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                         _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot([
                             { path: '', component: _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_7__["JobsComponent"] },
-                            { path: 'job/:id', component: _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_11__["SinglejobpageComponent"] },
+                            { path: ':id', component: _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_11__["SinglejobpageComponent"] },
                         ]),
                         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatCardModule"],
@@ -484,6 +484,7 @@
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatIconModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatDividerModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],
+                        _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatBottomSheetModule"]
                     ],
                     providers: [],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -516,11 +517,17 @@
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/bottom-sheet */ "./node_modules/@angular/material/esm2015/bottom-sheet.js");
+            /* harmony import */ var _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../singlejobpage/singlejobpage.component */ "./src/app/singlejobpage/singlejobpage.component.ts");
             var JobsComponent = /** @class */ (function () {
-                function JobsComponent(http) {
+                // @Output () filteredJob = this.filteredData;
+                function JobsComponent(http, _bottomSheet) {
                     this.http = http;
+                    this._bottomSheet = _bottomSheet;
                     this.options = [];
+                    this.idArray = [];
                     this.myControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
+                    this.myControlID = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
                     this.chosenJob = "";
                 }
                 JobsComponent.prototype.ngOnInit = function () {
@@ -538,8 +545,12 @@
                 };
                 ;
                 JobsComponent.prototype.saveData = function (resp) {
+                    var _this = this;
                     this.jobs = resp.jobs;
                     console.log(this.jobs);
+                    // catches the slugs(ids) in an array
+                    this.jobs.map(function (x) { return _this.idArray.push(x.data.slug); });
+                    console.log(this.idArray);
                     this.saveJobTitles(this.jobs);
                     // this.filterArray = resp.jobs;
                 };
@@ -550,48 +561,43 @@
                     console.log(this.options);
                 };
                 ;
-                // saveSearchData(resp) {
-                //   this.jobsearch = resp.jobs
-                //   console.log(this.jobsearch)
-                //   this.jobsearch.filter(this.searchFilter())
-                // };
-                // searchFilter(x, y){
-                //   if (x.data.title = y){
-                //     return x;
-                //   }
-                // }
                 // Fills form out with a string instead of object
                 JobsComponent.prototype.displayFunc = function (subj) {
                     return subj ? subj : undefined;
                 };
                 ;
+                JobsComponent.prototype.openBottomSheet = function () {
+                    this._bottomSheet.open(_singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_6__["SinglejobpageComponent"], {
+                        data: { searchResults: ["fuck you", "{{filteredData}}", "work plz"] },
+                    });
+                };
+                JobsComponent.prototype.filterForone = function (y) {
+                    var filteredData = this.jobs.filter(function (x) { return x.data.title === y; });
+                    console.log(filteredData);
+                    console.log(filteredData[0]);
+                    this.openBottomSheet();
+                };
                 JobsComponent.prototype.onclick = function (value) {
                     this.chosenJob = value;
                     console.log(this.myControl.value);
                     console.log(this.chosenJob);
                     var filterArg = { title: this.chosenJob };
-                    var filterArray = this.jobs;
-                    console.log(filterArg);
-                    //   let res2 = this.http.get("https://testapi.io/api/crimsonsunset/code-challenge-jobs");
-                    //   res2.subscribe(data => {
-                    //     this.saveSearchData(data);
-                    //   });
-                    //   this.filterOptions = this.myControl.valueChanges.pipe(
-                    //     startWith(''),
-                    //     map(value => (this._filter(value))
-                    //     ))
+                    this.filterForone(filterArg.title);
+                    // this.getOnebyTitle(filterArg.title)
                 };
                 return JobsComponent;
             }());
             JobsComponent.ctorParameters = function () { return [
-                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+                { type: _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_5__["MatBottomSheet"] }
             ]; };
             JobsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-jobs',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./jobs.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/jobs/jobs.component.html")).default,
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./jobs.component.scss */ "./src/app/jobs/jobs.component.scss")).default]
-                })
+                }),
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
             ], JobsComponent);
             ;
             /***/ 
@@ -688,19 +694,29 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SinglejobpageComponent", function () { return SinglejobpageComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/bottom-sheet */ "./node_modules/@angular/material/esm2015/bottom-sheet.js");
             var SinglejobpageComponent = /** @class */ (function () {
-                function SinglejobpageComponent() {
+                function SinglejobpageComponent(data, _bottomSheetRef) {
+                    this.data = data;
+                    this._bottomSheetRef = _bottomSheetRef;
                 }
-                SinglejobpageComponent.prototype.ngOnInit = function () {
+                SinglejobpageComponent.prototype.openLink = function (event) {
+                    this._bottomSheetRef.dismiss();
+                    event.preventDefault();
                 };
                 return SinglejobpageComponent;
             }());
+            SinglejobpageComponent.ctorParameters = function () { return [
+                { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MAT_BOTTOM_SHEET_DATA"],] }] },
+                { type: _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetRef"] }
+            ]; };
             SinglejobpageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-singlejobpage',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./singlejobpage.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/singlejobpage/singlejobpage.component.html")).default,
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./singlejobpage.component.scss */ "./src/app/singlejobpage/singlejobpage.component.scss")).default]
-                })
+                }),
+                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MAT_BOTTOM_SHEET_DATA"]))
             ], SinglejobpageComponent);
             /***/ 
         }),
