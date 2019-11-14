@@ -14,5 +14,6 @@ export class SinglejobpageComponent {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
+
   
 }

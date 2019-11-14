@@ -67,14 +67,15 @@ export class JobsComponent implements OnInit {
 
   openBottomSheet(): void {
     this._bottomSheet.open(SinglejobpageComponent, {
-      data: { searchResults: ["darn you", "{{filteredData}}" ,"work plz"] },
+      data: { searchResults: this.filteredData },
+      // data: { searchResults: ["darn you", "this.filteredData[0].data.title" ,"{{filteredData[0].data.title}}" ,"work plz"] },
     });
   }
 
   filterForone(y) {
     let filteredData = this.jobs.filter(x => x.data.title === y)
     console.log(filteredData)
-    console.log(filteredData[0])
+    console.log(filteredData[0].data.title)
     this.openBottomSheet();
   }
 
