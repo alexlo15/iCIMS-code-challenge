@@ -15,17 +15,12 @@ import { SinglejobpageComponent } from '../singlejobpage/singlejobpage.component
 export class JobsComponent implements OnInit {
 
   public jobs;
-  // public jobsearch;
-  // public jobFilterList;
-  // public filterArg;
   public filteredData;
   public options: string[] = [];
   public idArray: string[] = [];
   public myControl = new FormControl();
-  public myControlID = new FormControl();
   public filterOptions: Observable<string[]>;
   public chosenJob = "";
-  // @Output () filteredJob = this.filteredData;
 
   constructor(private http: HttpClient, private _bottomSheet: MatBottomSheet) { }
   ngOnInit() {
@@ -45,18 +40,17 @@ export class JobsComponent implements OnInit {
       option.toLowerCase().includes(filterVal)
     );
   };
+
   saveData(resp) {
     this.jobs = resp.jobs;
     console.log(this.jobs);
     // catches the slugs(ids) in an array
     this.jobs.map(x => this.idArray.push(x.data.slug))
-    console.log(this.idArray)
     this.saveJobTitles(this.jobs);
-    // this.filterArray = resp.jobs;
+
   };
   saveJobTitles(x) {
     x.map(name => this.options.push(name.data.title))
-    console.log(this.options)
   };
 
 
@@ -67,24 +61,28 @@ export class JobsComponent implements OnInit {
 
   openBottomSheet(): void {
     this._bottomSheet.open(SinglejobpageComponent, {
-      data: { searchResults: this.filteredData },
-      // data: { searchResults: ["darn you", "this.filteredData[0].data.title" ,"{{filteredData[0].data.title}}" ,"work plz"] },
+      data: { 
+        searchTitle: this.filteredData[0].data.title,
+        searchDescription: this.filteredData[0].data.description,
+        searchCompany: this.filteredData[0].data.hiring_organization,
+        searchStreet: this.filteredData[0].data.street_address,
+        searchCity: this.filteredData[0].data.city,
+        searchState: this.filteredData[0].data.state,
+        searchSummary: this.filteredData[0].data.meta_data.googlejobs.jobSummary,
+        // searchTitle: this.filteredData[0].data.title,
+        // searchTitle: this.filteredData[0].data.title,
+       },
     });
   }
 
   filterForone(y) {
-    let filteredData = this.jobs.filter(x => x.data.title === y)
-    console.log(filteredData)
-    console.log(filteredData[0].data.title)
+    this.filteredData = this.jobs.filter(x => x.data.title === y)
     this.openBottomSheet();
   }
 
   onclick(value) {
     this.chosenJob = value;
-    console.log(this.myControl.value);
-    console.log(this.chosenJob);
     let filterArg = { title: this.chosenJob };
     this.filterForone(filterArg.title);
-    // this.getOnebyTitle(filterArg.title)
   }
 };

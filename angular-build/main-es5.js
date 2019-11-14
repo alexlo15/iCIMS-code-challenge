@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div>\n    passed in {{data.searchResults}}\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n    <mat-card-title>\n        {{data.searchTitle}} at {{data.searchCompany}}\n    </mat-card-title>\n\n    <ul>\n        <li>{{data.searchStreet}} {{data.searchCity}}, {{data.searchState}}</li>\n        <li>{{data.searchDescription}}</li>\n        <li>{{data.searchSummary}}</li>\n\n    </ul>\n</mat-card>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -568,13 +568,21 @@
                 ;
                 JobsComponent.prototype.openBottomSheet = function () {
                     this._bottomSheet.open(_singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_6__["SinglejobpageComponent"], {
-                        data: { searchResults: this.filteredData },
+                        data: {
+                            searchTitle: this.filteredData[0].data.title,
+                            searchDescription: this.filteredData[0].data.description,
+                            searchCompany: this.filteredData[0].data.hiring_organization,
+                            searchStreet: this.filteredData[0].data.street_address,
+                            searchCity: this.filteredData[0].data.city,
+                            searchState: this.filteredData[0].data.state,
+                            searchSummary: this.filteredData[0].data.meta_data.googlejobs.jobSummary,
+                        },
                     });
                 };
                 JobsComponent.prototype.filterForone = function (y) {
-                    var filteredData = this.jobs.filter(function (x) { return x.data.title === y; });
-                    console.log(filteredData);
-                    console.log(filteredData[0].data.title);
+                    this.filteredData = this.jobs.filter(function (x) { return x.data.title === y; });
+                    console.log(this.filteredData);
+                    console.log(this.filteredData[0].data.title);
                     this.openBottomSheet();
                 };
                 JobsComponent.prototype.onclick = function (value) {

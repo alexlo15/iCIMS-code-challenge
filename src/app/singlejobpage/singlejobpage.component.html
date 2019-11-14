@@ -1,3 +1,12 @@
-<div>
-    passed in {{data.searchResults}}
-</div>
+<mat-card>
+    <mat-card-title>
+        {{data.searchTitle}} at {{data.searchCompany}}
+    </mat-card-title>
+
+    <ul>
+        <li>{{data.searchStreet}} {{data.searchCity}}, {{data.searchState}}</li>
+        <li>{{data.searchDescription}}</li>
+        <li>{{data.searchSummary}}</li>
+
+    </ul>
+</mat-card>

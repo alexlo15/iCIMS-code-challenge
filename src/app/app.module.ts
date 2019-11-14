@@ -3,14 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { JobsComponent } from './jobs/jobs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule ,MatDividerModule ,MatIconModule ,MatCardModule, MatInputModule, MatExpansionModule, MatGridListModule, MatToolbarModule, MatAutocompleteModule, MatBottomSheetModule, MAT_BOTTOM_SHEET_DATA } from "@angular/material"
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SinglejobpageComponent } from './singlejobpage/singlejobpage.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MyFilterPipe } from './pipes/jobfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { MyFilterPipe } from './pipes/jobfilter.pipe';
     JobsComponent,
     SinglejobpageComponent,
     NavbarComponent,
-    MyFilterPipe,
   ],
   imports: [
     BrowserModule,
