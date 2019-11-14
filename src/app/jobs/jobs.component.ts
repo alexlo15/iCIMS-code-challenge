@@ -43,7 +43,6 @@ export class JobsComponent implements OnInit {
 
   saveData(resp) {
     this.jobs = resp.jobs;
-    console.log(this.jobs);
     // catches the slugs(ids) in an array
     this.jobs.map(x => this.idArray.push(x.data.slug))
     this.saveJobTitles(this.jobs);

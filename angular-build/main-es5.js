@@ -39,7 +39,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\n<mat-grid-list cols=\"1\" rowHeight=\"50px\">\n    <mat-grid-tile class=\"searchBar\">\n        <h2>Search job postings:</h2>\n        <form>\n\n            <mat-form-field>\n                <input type=\"text\" matInput [matAutocomplete]=\"auto\" [formControl]=\"myControl\" />\n            </mat-form-field>\n            <button (click)=\"onclick(this.myControl.value)\" mat-raised-button color=\"primary\">Search</button>\n\n            <mat-autocomplete role=\"input\" #auto=\"matAutocomplete\" [displayWith]=\"displayFunc\">\n                <mat-option *ngFor=\"let option of filterOptions | async\" [value]=\"option\">\n                    {{option}}\n                </mat-option>\n\n            </mat-autocomplete>\n\n        </form>\n    </mat-grid-tile>\n</mat-grid-list>\n\n\n\n<mat-grid-list cols=\"1\" rowHeight=\"10:2\">\n    <div *ngFor=\"let job of jobs\">\n        <mat-grid-tile>\n            <mat-card id=\"cards\">\n                <mat-card-title>\n                    <p id=\"eachjobheader\">\n                        <span>{{job.data.title}}</span>\n                        <span id=\"company\"><i class=\"material-icons\">\n                                business_center\n                            </i>{{job.data.hiring_organization}}\n                        </span>\n                    </p>\n                </mat-card-title>\n\n                <mat-expansion-panel>\n                    <mat-expansion-panel-header>\n                        <mat-panel-title>\n                            <p id=\"eachjoblocation\">\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">location_city</i>\n                                    {{job.data.city}}, {{job.data.state}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">attach_money</i>\n                                    {{job.data.salary_value}}/{{job.data.salary_frequency}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">calendar_today</i>\n                                    {{job.data.employment_type}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\"> av_timer</i>\n                                    {{job.data.work_hours}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">emoji_objects</i>\n                                    {{job.data.experience_levels}} Level\n                                </span>\n                            </p>\n                        </mat-panel-title>\n                    </mat-expansion-panel-header>\n\n                    <mat-grid-list cols=\"3\" rowHeight=\"3:1\">\n                        <mat-grid-tile>\n                            <p>{{job.data.description.substring(0,300)}}</p>\n                        </mat-grid-tile>\n                        <mat-grid-tile>\n                            <ul id=\"eachjobbody\">\n                                <li><strong>Address: </strong>{{job.data.street_address}}, {{job.data.city}},\n                                    {{job.data.state}}, {{job.data.postal_code}}</li>\n                                <li><strong>Qualifications: </strong>{{job.data.qualifications}}</li>\n                                <li><strong>Education: </strong>{{job.data.education_level}}</li>\n\n                            </ul>\n                        </mat-grid-tile>\n                        <mat-grid-tile>\n                            <ul id=\"eachjobbody\">\n                                <li><strong>Contact: </strong>{{job.data.source}}</li>\n                                <li><strong>Posted date: </strong>{{job.data.create_date}}</li>\n                                <li><strong>Travel Required: </strong>{{job.data.multipleLocations}}</li>\n                            </ul>\n                        </mat-grid-tile>\n                    </mat-grid-list>\n\n\n\n\n\n                </mat-expansion-panel>\n            </mat-card>\n        </mat-grid-tile>\n\n    </div>\n</mat-grid-list>\n\n<li *ngFor=\"let job of filterArray | myfilter:filterArg\">\n    <div>{{job.data.title}} </div>\n</li>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<app-navbar></app-navbar>\n<mat-grid-list cols=\"1\" rowHeight=\"50px\">\n    <mat-grid-tile class=\"searchBar\">\n        <h2>Search job postings:</h2>\n        <form>\n\n            <mat-form-field>\n                <input type=\"text\" matInput [matAutocomplete]=\"auto\" [formControl]=\"myControl\" />\n            </mat-form-field>\n            <button (click)=\"onclick(this.myControl.value)\" mat-raised-button color=\"primary\">Search</button>\n\n            <mat-autocomplete role=\"input\" #auto=\"matAutocomplete\" [displayWith]=\"displayFunc\">\n                <mat-option *ngFor=\"let option of filterOptions | async\" [value]=\"option\">\n                    {{option}}\n                </mat-option>\n\n            </mat-autocomplete>\n\n        </form>\n    </mat-grid-tile>\n</mat-grid-list>\n\n\n\n<mat-grid-list cols=\"1\" rowHeight=\"10:2\">\n    <div *ngFor=\"let job of jobs\">\n        <mat-grid-tile>\n            <mat-card id=\"cards\">\n                <mat-card-title>\n                    <p id=\"eachjobheader\">\n                        <span>{{job.data.title}}</span>\n                        <span id=\"company\"><i class=\"material-icons\">\n                                business_center\n                            </i>{{job.data.hiring_organization}}\n                        </span>\n                    </p>\n                </mat-card-title>\n\n                <mat-expansion-panel>\n                    <mat-expansion-panel-header>\n                        <mat-panel-title>\n                            <p id=\"eachjoblocation\">\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">location_city</i>\n                                    {{job.data.city}}, {{job.data.state}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">attach_money</i>\n                                    {{job.data.salary_value}}/{{job.data.salary_frequency}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">calendar_today</i>\n                                    {{job.data.employment_type}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\"> av_timer</i>\n                                    {{job.data.work_hours}}\n                                </span>\n                                <span id=\"statbar\">\n                                    <i class=\"material-icons\">emoji_objects</i>\n                                    {{job.data.experience_levels}} Level\n                                </span>\n                            </p>\n                        </mat-panel-title>\n                    </mat-expansion-panel-header>\n\n                    <mat-grid-list cols=\"3\" rowHeight=\"3:1\">\n                        <mat-grid-tile>\n                            <p>{{job.data.description.substring(0,300)}}</p>\n                        </mat-grid-tile>\n                        <mat-grid-tile>\n                            <ul id=\"eachjobbody\">\n                                <li><strong>Address: </strong>{{job.data.street_address}}, {{job.data.city}},\n                                    {{job.data.state}}, {{job.data.postal_code}}</li>\n                                <li><strong>Qualifications: </strong>{{job.data.qualifications}}</li>\n                                <li><strong>Education: </strong>{{job.data.education_level}}</li>\n\n                            </ul>\n                        </mat-grid-tile>\n                        <mat-grid-tile>\n                            <ul id=\"eachjobbody\">\n                                <li><strong>Contact: </strong>{{job.data.source}}</li>\n                                <li><strong>Posted date: </strong>{{job.data.create_date}}</li>\n                                <li><strong>Travel Required: </strong>{{job.data.multipleLocations}}</li>\n                            </ul>\n                        </mat-grid-tile>\n                    </mat-grid-list>\n\n\n\n\n\n                </mat-expansion-panel>\n            </mat-card>\n        </mat-grid-tile>\n\n    </div>\n</mat-grid-list>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/navbar/navbar.component.html": 
@@ -449,7 +449,6 @@
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./singlejobpage/singlejobpage.component */ "./src/app/singlejobpage/singlejobpage.component.ts");
             /* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-            /* harmony import */ var _pipes_jobfilter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pipes/jobfilter.pipe */ "./src/app/pipes/jobfilter.pipe.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -462,7 +461,6 @@
                         _jobs_jobs_component__WEBPACK_IMPORTED_MODULE_7__["JobsComponent"],
                         _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_11__["SinglejobpageComponent"],
                         _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_12__["NavbarComponent"],
-                        _pipes_jobfilter_pipe__WEBPACK_IMPORTED_MODULE_13__["MyFilterPipe"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -520,14 +518,12 @@
             /* harmony import */ var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/bottom-sheet */ "./node_modules/@angular/material/esm2015/bottom-sheet.js");
             /* harmony import */ var _singlejobpage_singlejobpage_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../singlejobpage/singlejobpage.component */ "./src/app/singlejobpage/singlejobpage.component.ts");
             var JobsComponent = /** @class */ (function () {
-                // @Output () filteredJob = this.filteredData;
                 function JobsComponent(http, _bottomSheet) {
                     this.http = http;
                     this._bottomSheet = _bottomSheet;
                     this.options = [];
                     this.idArray = [];
                     this.myControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
-                    this.myControlID = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
                     this.chosenJob = "";
                 }
                 JobsComponent.prototype.ngOnInit = function () {
@@ -547,18 +543,14 @@
                 JobsComponent.prototype.saveData = function (resp) {
                     var _this = this;
                     this.jobs = resp.jobs;
-                    console.log(this.jobs);
                     // catches the slugs(ids) in an array
                     this.jobs.map(function (x) { return _this.idArray.push(x.data.slug); });
-                    console.log(this.idArray);
                     this.saveJobTitles(this.jobs);
-                    // this.filterArray = resp.jobs;
                 };
                 ;
                 JobsComponent.prototype.saveJobTitles = function (x) {
                     var _this = this;
                     x.map(function (name) { return _this.options.push(name.data.title); });
-                    console.log(this.options);
                 };
                 ;
                 // Fills form out with a string instead of object
@@ -581,17 +573,12 @@
                 };
                 JobsComponent.prototype.filterForone = function (y) {
                     this.filteredData = this.jobs.filter(function (x) { return x.data.title === y; });
-                    console.log(this.filteredData);
-                    console.log(this.filteredData[0].data.title);
                     this.openBottomSheet();
                 };
                 JobsComponent.prototype.onclick = function (value) {
                     this.chosenJob = value;
-                    console.log(this.myControl.value);
-                    console.log(this.chosenJob);
                     var filterArg = { title: this.chosenJob };
                     this.filterForone(filterArg.title);
-                    // this.getOnebyTitle(filterArg.title)
                 };
                 return JobsComponent;
             }());
@@ -646,38 +633,6 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")).default]
                 })
             ], NavbarComponent);
-            /***/ 
-        }),
-        /***/ "./src/app/pipes/jobfilter.pipe.ts": 
-        /*!*****************************************!*\
-          !*** ./src/app/pipes/jobfilter.pipe.ts ***!
-          \*****************************************/
-        /*! exports provided: MyFilterPipe */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyFilterPipe", function () { return MyFilterPipe; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            var MyFilterPipe = /** @class */ (function () {
-                function MyFilterPipe() {
-                }
-                MyFilterPipe.prototype.transform = function (items, filter) {
-                    if (!items || !filter) {
-                        return items;
-                    }
-                    // filter items array, items which match and return true will be
-                    // kept, false will be filtered out
-                    return items.filter(function (item) { return item.data.title.indexOf(filter) !== -1; });
-                };
-                return MyFilterPipe;
-            }());
-            MyFilterPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-                    name: 'myfilter',
-                    pure: false
-                })
-            ], MyFilterPipe);
             /***/ 
         }),
         /***/ "./src/app/singlejobpage/singlejobpage.component.scss": 
