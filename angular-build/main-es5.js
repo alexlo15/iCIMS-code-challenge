@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div>\n    passed in {{data.searchResults}}\n\n\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div>\n    passed in {{data.searchResults}}\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -484,7 +484,7 @@
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatIconModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatDividerModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatButtonModule"],
-                        _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatBottomSheetModule"]
+                        _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatBottomSheetModule"],
                     ],
                     providers: [],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]

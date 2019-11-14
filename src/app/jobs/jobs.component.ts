@@ -9,11 +9,11 @@ import { SinglejobpageComponent } from '../singlejobpage/singlejobpage.component
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
 })
 @Injectable()
 export class JobsComponent implements OnInit {
-  
+
   public jobs;
   // public jobsearch;
   // public jobFilterList;

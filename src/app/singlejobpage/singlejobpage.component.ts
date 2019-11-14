@@ -4,16 +4,18 @@ import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bott
 @Component({
   selector: 'app-singlejobpage',
   templateUrl: './singlejobpage.component.html',
-  styleUrls: ['./singlejobpage.component.scss']
+  styleUrls: ['./singlejobpage.component.scss'],
+
 })
 export class SinglejobpageComponent {
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private _bottomSheetRef: MatBottomSheetRef<SinglejobpageComponent>) { }
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    private _bottomSheetRef: MatBottomSheetRef<SinglejobpageComponent>) { }
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
 
-  
+
 }
